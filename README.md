@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # HotelReservation
 =======
 # Getting Started with Create React App
