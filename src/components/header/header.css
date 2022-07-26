@@ -1,0 +1,45 @@
+.header {
+    background: brown;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.headerContainer {
+    width: 100%;
+    max-width: 1024px;
+    margin: 30px 0 100px 0;
+}
+
+.headerList {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.headerItems {
+    display: flex;
+    gap: 10px;
+    align-items: center ;
+    cursor: pointer;
+}
+
+.headerItems.active {
+    border-bottom: 1px solid rgb(255 179 126);
+    padding: 10px;
+}
+
+.headingSubtitle {
+    margin: 20px 0;
+}
+
+.headerBtn {
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 40px;
+    background-color: transparent;
+    margin-top: 20px;
+}
