@@ -34,11 +34,33 @@ const Header = () => {
   // Setting states for room ccupancy to be false (closed) when window opens
   const [openPeople, setopenPeople] = useState(false);
 
-  // Setting states for room ccupancy
-  const [people, setPeople] = useState({
-    adult: 1,
-    rooms: 1,
-  });
+  // Set initial count
+  const [roomCount, setRoomCount] = useState(1);
+  const [peopleCount, setPeopleCount] = useState(1);
+
+  const increasePeopleCount = () => {
+    if (peopleCount < 10) {
+      setPeopleCount(peopleCount + 1)
+    }
+  }
+
+  const decreasePeopleCount = () => {
+    if (peopleCount > 0) {
+      setPeopleCount(peopleCount - 1)
+    }
+  }
+
+  const increaseRoomCount = () => {
+    if (peopleCount < 10) {
+      setRoomCount(roomCount + 1)
+    }
+  }
+
+  const decreaseRoomCount = () => {
+    if (peopleCount > 0) {
+      setRoomCount(roomCount - 1)
+    }
+  }
 
   return (
     <div className="header">
@@ -93,27 +115,26 @@ const Header = () => {
           </div>
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faPerson} className="searchIcon" />
-            <span onClick={()=> {setopenPeople(!openPeople)}} className="headerSearchText">
-              {`${people.adult} adult . ${people.rooms} rooms`}
-              <div className="occupancyOptions">
+            <span onClick={() => { setopenPeople(!openPeople) }} className="headerSearchText">{`${peopleCount} adult . ${roomCount} rooms`}
+            </span>
+            {openPeople && <div className="occupancyOptions">
                 <div className="occupancyItem">
                   <span className="occupancyText">Adult</span>
                   <div className="counterContainer">
-                    <button className="counter">-</button>
-                    <span className="count">1</span>
-                    <button className="counter">+</button>
+                    <button className="counter" onClick={decreasePeopleCount}>-</button>
+                    <span className="count">{`${peopleCount}`}</span>
+                    <button className="counter" onClick={increasePeopleCount}>+</button>
                   </div>
                 </div>
                 <div className="occupancyItem">
                   <span className="occupancyText">Room</span>
                   <div className="counterContainer">
-                    <button className="counter">-</button>
-                    <span className="count">1</span>
-                    <button className="counter">+</button>
+                    <button className="counter" onClick={decreaseRoomCount}>-</button>
+                    <span className="count">{`${roomCount}`}</span>
+                    <button className="counter" onClick={increaseRoomCount}>+</button>
                   </div>
                 </div>
-              </div>
-            </span>
+              </div>}
           </div>
           <div className="headerSearchItem">
             <button className="searchBtn">
