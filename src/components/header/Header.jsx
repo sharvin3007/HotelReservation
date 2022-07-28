@@ -13,6 +13,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { useState } from "react";
 import { DateRange } from "react-date-range";
 import moment from "moment";
+import Dropdown from "../dropdown/Dropdown";
 
 const Header = () => {
   // Keeping the date range picker closed when window loads
@@ -91,9 +92,10 @@ const Header = () => {
             <FontAwesomeIcon icon={faBed} className="searchIcon" />
             <input
               type="text"
-              placeholder="What stays are you looking for?"
+              placeholder="Which room are you looking for?"
               className="searchInput"
             />
+            <Dropdown />
           </div>
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faCalendar} className="searchIcon" />
@@ -138,7 +140,7 @@ const Header = () => {
           </div>
           <div className="headerSearchItem">
             <button className="searchBtn">
-              Search <FontAwesomeIcon icon={faSearch} className="searchIcon" />
+              Search rooms
             </button>
           </div>
         </div>

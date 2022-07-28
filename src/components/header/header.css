@@ -83,16 +83,24 @@
 
 .searchBtn {
     border: 1px solid #fff;
-    color: #000;
+    color: gray;
     padding: 10px;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 700;
     border-radius: 40px;
+    font-size: 14px;
+}
+
+.searchBtn.active {
+    border: 1px solid #fff;
+    color: #fff;
+    background-color: brown;
 }
 
 .date {
     position: absolute;
     top: 50px;
+    z-index: 2;
 }
 
 .occupancyOptions {
@@ -102,6 +110,7 @@
     color: lightgray;
     border-radius: 5px;
     border: 1px solid lightgray;
+    z-index: 2;
 }
 
 .occupancyItem {
