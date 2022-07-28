@@ -3,6 +3,7 @@ import Hotel from "../../data/Hotel";
 import "./room.css";
 
 const randRoom = Hotel.sort(() => Math.random() - Math.random()).slice(0, 3);
+console.log(randRoom);
 
 const Room = () => {
   return (
