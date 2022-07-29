@@ -5,7 +5,6 @@ import {
   faHandsHolding,
   faHouse,
   faPerson,
-  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import "./header.css";
 import "react-date-range/dist/styles.css"; // main css file
@@ -14,6 +13,7 @@ import { useState } from "react";
 import { DateRange } from "react-date-range";
 import moment from "moment";
 import Dropdown from "../dropdown/Dropdown";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   // Keeping the date range picker closed when window loads
@@ -41,27 +41,27 @@ const Header = () => {
 
   const increasePeopleCount = () => {
     if (peopleCount < 10) {
-      setPeopleCount(peopleCount + 1)
+      setPeopleCount(peopleCount + 1);
     }
-  }
+  };
 
   const decreasePeopleCount = () => {
     if (peopleCount > 0) {
-      setPeopleCount(peopleCount - 1)
+      setPeopleCount(peopleCount - 1);
     }
-  }
+  };
 
   const increaseRoomCount = () => {
     if (peopleCount < 10) {
-      setRoomCount(roomCount + 1)
+      setRoomCount(roomCount + 1);
     }
-  }
+  };
 
   const decreaseRoomCount = () => {
     if (peopleCount > 0) {
-      setRoomCount(roomCount - 1)
+      setRoomCount(roomCount - 1);
     }
-  }
+  };
 
   return (
     <div className="header">
@@ -69,11 +69,15 @@ const Header = () => {
         <div className="headerList">
           <div className="headerItems active">
             <FontAwesomeIcon icon={faHouse} />
-            <span>Hotels</span>
+            <NavLink exact activeClassName="active" to="/" className="navAnchor">
+              Home
+            </NavLink>
           </div>
           <div className="headerItems">
             <FontAwesomeIcon icon={faBed} />
-            <span>Rooms</span>
+            <NavLink activeClassName="active" to="/rooms" className="navAnchor">
+              Rooms
+            </NavLink>
           </div>
           <div className="headerItems">
             <FontAwesomeIcon icon={faHandsHolding} />
@@ -90,11 +94,6 @@ const Header = () => {
         <div className="headerSearchBar">
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faBed} className="searchIcon" />
-            <input
-              type="text"
-              placeholder="Which room are you looking for?"
-              className="searchInput"
-            />
             <Dropdown />
           </div>
           <div className="headerSearchItem">
@@ -117,31 +116,45 @@ const Header = () => {
           </div>
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faPerson} className="searchIcon" />
-            <span onClick={() => { setopenPeople(!openPeople) }} className="headerSearchText">{`${peopleCount} adult . ${roomCount} rooms`}
+            <span
+              onClick={() => {
+                setopenPeople(!openPeople);
+              }}
+              className="headerSearchText"
+            >
+              {`${peopleCount} adult . ${roomCount} rooms`}
             </span>
-            {openPeople && <div className="occupancyOptions">
+            {openPeople && (
+              <div className="occupancyOptions">
                 <div className="occupancyItem">
                   <span className="occupancyText">Adult</span>
                   <div className="counterContainer">
-                    <button className="counter" onClick={decreasePeopleCount}>-</button>
+                    <button className="counter" onClick={decreasePeopleCount}>
+                      -
+                    </button>
                     <span className="count">{`${peopleCount}`}</span>
-                    <button className="counter" onClick={increasePeopleCount}>+</button>
+                    <button className="counter" onClick={increasePeopleCount}>
+                      +
+                    </button>
                   </div>
                 </div>
                 <div className="occupancyItem">
                   <span className="occupancyText">Room</span>
                   <div className="counterContainer">
-                    <button className="counter" onClick={decreaseRoomCount}>-</button>
+                    <button className="counter" onClick={decreaseRoomCount}>
+                      -
+                    </button>
                     <span className="count">{`${roomCount}`}</span>
-                    <button className="counter" onClick={increaseRoomCount}>+</button>
+                    <button className="counter" onClick={increaseRoomCount}>
+                      +
+                    </button>
                   </div>
                 </div>
-              </div>}
+              </div>
+            )}
           </div>
           <div className="headerSearchItem">
-            <button className="searchBtn">
-              Search rooms
-            </button>
+            <button className="searchBtn">Search rooms</button>
           </div>
         </div>
       </div>

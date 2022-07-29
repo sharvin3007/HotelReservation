@@ -40,4 +40,6 @@ img.roomImg {
     font-weight: 700;
     border-radius: 40px;
     background-color: brown;
+    font-size:12px;
+    text-decoration: none;
 }

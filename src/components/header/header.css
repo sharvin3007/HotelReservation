@@ -6,6 +6,11 @@
     position: relative;
 }
 
+.navAnchor {
+    color: #fff;
+    text-decoration: none;
+}
+
 .headerContainer {
     width: 100%;
     max-width: 1024px;
@@ -35,7 +40,6 @@
 }
 
 .headerBtn {
-    border: 1px solid #fff;
     color: #fff;
     padding: 10px;
     cursor: pointer;
