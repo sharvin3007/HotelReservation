@@ -74,7 +74,6 @@ const Header = (props) => {
 
   // Function to create object of room data on search
   const onTriggerTrx = () => {
-    console.log('clicked')
     const childObj = {
       roomTotal: roomCount,
       startDate: formatStartDate,

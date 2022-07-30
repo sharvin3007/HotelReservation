@@ -16,8 +16,10 @@ const Dropdown = (props) => {
 
   const handleSelection = (e) => {
     const selectedVal = e.value
-    console.log(selectedVal, option)
+    setOptions({selectedValue: selectedVal})
   }
+
+  console.log(option)
 
   return (
     <ReactDropdown
