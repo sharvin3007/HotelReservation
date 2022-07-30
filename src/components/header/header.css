@@ -28,6 +28,8 @@
     gap: 10px;
     align-items: center ;
     cursor: pointer;
+    color: #fff;
+    text-decoration: none;
 }
 
 .headerItems.active {
@@ -47,6 +49,7 @@
     border-radius: 40px;
     background-color: transparent;
     margin-top: 20px;
+    border: 1px solid #fff;
 }
 
 .headerSearchBar {
@@ -81,16 +84,16 @@
 }
 
 .headerSearchText {
-    color: #545252;
+    color: gray;
     cursor: pointer;
 }
 
 .searchBtn {
-    border: 1px solid #fff;
+    border: 1px solid lightgray;
     color: gray;
-    padding: 10px;
+    padding: 8px;
     cursor: pointer;
-    font-weight: 700;
+    font-weight: 600;
     border-radius: 40px;
     font-size: 14px;
 }

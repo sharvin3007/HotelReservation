@@ -67,22 +67,18 @@ const Header = () => {
     <div className="header">
       <div className="headerContainer">
         <div className="headerList">
-          <div className="headerItems active">
+          <NavLink activeclassname="active" to="/" className="headerItems">
             <FontAwesomeIcon icon={faHouse} />
-            <NavLink exact activeClassName="active" to="/" className="navAnchor">
-              Home
-            </NavLink>
-          </div>
-          <div className="headerItems">
+            <span>Home</span>
+          </NavLink>
+          <NavLink activeclassname="active" to="/rooms" className="headerItems">
             <FontAwesomeIcon icon={faBed} />
-            <NavLink activeClassName="active" to="/rooms" className="navAnchor">
-              Rooms
-            </NavLink>
-          </div>
-          <div className="headerItems">
+            <span>Rooms</span>
+          </NavLink>
+          <NavLink activeclassname="active" to="/about" className="headerItems">
             <FontAwesomeIcon icon={faHandsHolding} />
             <span>About Us</span>
-          </div>
+          </NavLink>
         </div>
         <h1 className="headingTitle">
           Discover our latest discounts exclusively for a limited time!
