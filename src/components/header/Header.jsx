@@ -23,7 +23,7 @@ const Header = () => {
   const [date, setDate] = useState([
     {
       startDate: new Date(),
-      endDate: new Date(),
+      endDate: new Date().setDate(new Date().getDate() + 1),
       key: "selection",
     },
   ]);
@@ -53,7 +53,7 @@ const Header = () => {
 
   const increaseRoomCount = () => {
     if (peopleCount < 10) {
-      setRoomCount(roomCount + 1);
+      setRoomCount(roomCount + 1); 
     }
   };
 
@@ -125,11 +125,11 @@ const Header = () => {
                 <div className="occupancyItem">
                   <span className="occupancyText">Adult</span>
                   <div className="counterContainer">
-                    <button className="counter" onClick={decreasePeopleCount}>
+                    <button className="counter" disabled={peopleCount < 1} onClick={decreasePeopleCount}>
                       -
                     </button>
                     <span className="count">{`${peopleCount}`}</span>
-                    <button className="counter" onClick={increasePeopleCount}>
+                    <button className="counter" disabled={peopleCount > 3} onClick={increasePeopleCount}>
                       +
                     </button>
                   </div>
@@ -137,11 +137,11 @@ const Header = () => {
                 <div className="occupancyItem">
                   <span className="occupancyText">Room</span>
                   <div className="counterContainer">
-                    <button className="counter" onClick={decreaseRoomCount}>
+                    <button className="counter" disabled={roomCount < 1} onClick={decreaseRoomCount}>
                       -
                     </button>
                     <span className="count">{`${roomCount}`}</span>
-                    <button className="counter" onClick={increaseRoomCount}>
+                    <button className="counter" disabled={roomCount > 1} onClick={increaseRoomCount}>
                       +
                     </button>
                   </div>
