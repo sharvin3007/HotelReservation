@@ -34,7 +34,7 @@ const Hotel = [
     Occupancy: "1",
     Checkin: "",
     Checkout: "",
-    status: "Occupied",
+    status: "Available",
     image: "./Images/single-room-4.jpg"
   },
   {
@@ -61,7 +61,7 @@ const Hotel = [
     Occupancy: "1",
     Checkin: "",
     Checkout: "",
-    status: "Occupied",
+    status: "Available",
     image: "./Images/single-room-7.jpg"
   },
   {
@@ -79,7 +79,7 @@ const Hotel = [
     Occupancy: "2",
     Checkin: "",
     Checkout: "",
-    status: "Occupied",
+    status: "Available",
     image: "./Images/room-img-2.jpeg"
   },
   {

@@ -13,9 +13,10 @@ import { useState } from "react";
 import { DateRange } from "react-date-range";
 import moment from "moment";
 import Dropdown from "../dropdown/Dropdown";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { format } from "date-fns";
 
-const Header = () => {
+const Header = (props) => {
   // Keeping the date range picker closed when window loads
   const [openDate, setOpenDate] = useState(false);
 
@@ -53,7 +54,7 @@ const Header = () => {
 
   const increaseRoomCount = () => {
     if (peopleCount < 10) {
-      setRoomCount(roomCount + 1); 
+      setRoomCount(roomCount + 1);
     }
   };
 
@@ -61,6 +62,25 @@ const Header = () => {
     if (peopleCount > 0) {
       setRoomCount(roomCount - 1);
     }
+  };
+
+  const [roomType, setRoomType] = useState({roomSort: ''})
+
+  const handleRoomTypeCallback = (event) => {
+    setRoomType({roomKind: event.value})
+    // console.log('on')
+    // console.log(event)
+  }
+
+  // Function to create object of room data on search
+  const onTriggerTrx = () => {
+    console.log('clicked')
+    const childObj = {
+      roomTotal: roomCount,
+      startDate: formatStartDate,
+      endDate: formatEndDate,
+    };
+    props.parentCallback(childObj);
   };
 
   return (
@@ -90,7 +110,7 @@ const Header = () => {
         <div className="headerSearchBar">
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faBed} className="searchIcon" />
-            <Dropdown />
+            <Dropdown parentCallback = {handleRoomTypeCallback} />
           </div>
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faCalendar} className="searchIcon" />
@@ -125,11 +145,19 @@ const Header = () => {
                 <div className="occupancyItem">
                   <span className="occupancyText">Adult</span>
                   <div className="counterContainer">
-                    <button className="counter" disabled={peopleCount < 1} onClick={decreasePeopleCount}>
+                    <button
+                      className="counter"
+                      disabled={peopleCount < 1}
+                      onClick={decreasePeopleCount}
+                    >
                       -
                     </button>
                     <span className="count">{`${peopleCount}`}</span>
-                    <button className="counter" disabled={peopleCount > 3} onClick={increasePeopleCount}>
+                    <button
+                      className="counter"
+                      disabled={peopleCount > 3}
+                      onClick={increasePeopleCount}
+                    >
                       +
                     </button>
                   </div>
@@ -137,11 +165,19 @@ const Header = () => {
                 <div className="occupancyItem">
                   <span className="occupancyText">Room</span>
                   <div className="counterContainer">
-                    <button className="counter" disabled={roomCount < 1} onClick={decreaseRoomCount}>
+                    <button
+                      className="counter"
+                      disabled={roomCount < 1}
+                      onClick={decreaseRoomCount}
+                    >
                       -
                     </button>
                     <span className="count">{`${roomCount}`}</span>
-                    <button className="counter" disabled={roomCount > 1} onClick={increaseRoomCount}>
+                    <button
+                      className="counter"
+                      disabled={roomCount > 1}
+                      onClick={increaseRoomCount}
+                    >
                       +
                     </button>
                   </div>
@@ -150,7 +186,9 @@ const Header = () => {
             )}
           </div>
           <div className="headerSearchItem">
-            <button className="searchBtn">Search rooms</button>
+            <button className="searchBtn" onClick={onTriggerTrx}>
+              Search rooms
+            </button>
           </div>
         </div>
       </div>

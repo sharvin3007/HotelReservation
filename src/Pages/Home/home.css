@@ -5,3 +5,8 @@
     align-items: center;
     gap: 20px;
 }
+
+.clickMe {
+    margin: 60px auto;
+    display: flex;
+}

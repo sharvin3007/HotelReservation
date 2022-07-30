@@ -1,16 +1,32 @@
+import { useState } from "react";
 import ReactDropdown from "react-dropdown";
-import 'react-dropdown/style.css';
+import "react-dropdown/style.css";
 import "./dropdown.css";
 
-const options = [
-  'Single Room', 'Double Room'
-];
+// Function to create object of room data on search
 
-const defaultOption = options[0];
+const Dropdown = (props) => {
+  const [option, setOptions] = useState({
+    options: ['Single Room', 'Double Room'],
+    selectedValue: "",
+    defaultValue: 'Single Room'
+  });
+  
+  // console.log(option.selectedValue)
 
-const Dropdown = () => {
+  const handleSelection = (e) => {
+    const selectedVal = e.value
+    console.log(selectedVal, option)
+  }
+
   return (
-    <ReactDropdown className="dropdown" options={options} value={defaultOption} placeholder="Select an option"/>
+    <ReactDropdown
+      className="dropdown"
+      options={option.options}
+      value={option.defaultValue}
+      placeholder="Select an option"
+      onChange={handleSelection}
+    />
   );
 };
 
