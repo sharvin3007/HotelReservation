@@ -3,6 +3,7 @@ import {
   faBed,
   faCalendar,
   faHandsHolding,
+  faHomeAlt,
   faHouse,
   faPerson,
 } from "@fortawesome/free-solid-svg-icons";
@@ -30,46 +31,32 @@ const Header = (props) => {
   ]);
 
   // Formatting date as per required string
-  const formatStartDate = moment(date[0].startDate).format("MMM Do YY");
-  const formatEndDate = moment(date[0].endDate).format("MMM Do YY");
+  const formatStartDate = moment(date[0].startDate).format("MM/DD/YYYY");
+  const formatEndDate = moment(date[0].endDate).format("MM/DD/YYYY");
 
   // Setting states for room ccupancy to be false (closed) when window opens
   const [openPeople, setopenPeople] = useState(false);
 
   // Set initial count
   const [roomCount, setRoomCount] = useState(1);
-  const [peopleCount, setPeopleCount] = useState(1);
-
-  const increasePeopleCount = () => {
-    if (peopleCount < 10) {
-      setPeopleCount(peopleCount + 1);
-    }
-  };
-
-  const decreasePeopleCount = () => {
-    if (peopleCount > 0) {
-      setPeopleCount(peopleCount - 1);
-    }
-  };
+  // const [peopleCount, setPeopleCount] = useState(1);
 
   const increaseRoomCount = () => {
-    if (peopleCount < 10) {
+    if (roomCount < 10) {
       setRoomCount(roomCount + 1);
     }
   };
 
   const decreaseRoomCount = () => {
-    if (peopleCount > 0) {
+    if (roomCount > 0) {
       setRoomCount(roomCount - 1);
     }
   };
 
-  const [roomType, setRoomType] = useState({roomSort: ''})
+  const [roomType, setRoomType] = useState('')
 
-  const handleRoomTypeCallback = (event) => {
-    setRoomType({roomKind: event.value})
-    // console.log('on')
-    // console.log(event)
+  const handleRoomTypeCallback = (typeData) => {
+    setRoomType(typeData)
   }
 
   // Function to create object of room data on search
@@ -78,6 +65,7 @@ const Header = (props) => {
       roomTotal: roomCount,
       startDate: formatStartDate,
       endDate: formatEndDate,
+      roomSort: roomType
     };
     props.parentCallback(childObj);
   };
@@ -109,7 +97,7 @@ const Header = (props) => {
         <div className="headerSearchBar">
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faBed} className="searchIcon" />
-            <Dropdown parentCallback = {handleRoomTypeCallback} />
+            <Dropdown typeCallback={handleRoomTypeCallback}/>
           </div>
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faCalendar} className="searchIcon" />
@@ -130,37 +118,17 @@ const Header = (props) => {
             )}
           </div>
           <div className="headerSearchItem">
-            <FontAwesomeIcon icon={faPerson} className="searchIcon" />
+            <FontAwesomeIcon icon={faHomeAlt} className="searchIcon" />
             <span
               onClick={() => {
                 setopenPeople(!openPeople);
               }}
               className="headerSearchText"
             >
-              {`${peopleCount} adult . ${roomCount} rooms`}
+              {`${roomCount} rooms`}
             </span>
             {openPeople && (
               <div className="occupancyOptions">
-                <div className="occupancyItem">
-                  <span className="occupancyText">Adult</span>
-                  <div className="counterContainer">
-                    <button
-                      className="counter"
-                      disabled={peopleCount < 1}
-                      onClick={decreasePeopleCount}
-                    >
-                      -
-                    </button>
-                    <span className="count">{`${peopleCount}`}</span>
-                    <button
-                      className="counter"
-                      disabled={peopleCount > 3}
-                      onClick={increasePeopleCount}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
                 <div className="occupancyItem">
                   <span className="occupancyText">Room</span>
                   <div className="counterContainer">
@@ -174,7 +142,7 @@ const Header = (props) => {
                     <span className="count">{`${roomCount}`}</span>
                     <button
                       className="counter"
-                      disabled={roomCount > 1}
+                      disabled={roomCount > 3}
                       onClick={increaseRoomCount}
                     >
                       +

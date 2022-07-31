@@ -1,8 +1,14 @@
 import "./room.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Room = (props) => {
-  // Defining props
+  const [roomId, setRoomId] = useState()
+
+  const handleClick = () => {
+    setRoomId(props.dataPacket.Id)
+  }
+
   return (
     <div className="roomItem">
       <img
@@ -15,7 +21,7 @@ const Room = (props) => {
         <h3>{props.dataPacket.status}</h3>
       </div>
       <div className="btnContainer">
-        <Link to="/rooms" className="bookBtn">Book now</Link>
+        <button onClick={handleClick} className="bookBtn">Book now</button>
       </div>
     </div>
   );
