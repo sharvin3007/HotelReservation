@@ -10,10 +10,22 @@ const Home = () => {
   // Random array of 3 featured objects
 
   const [booking, setBooking] = useState([
-    { Id: "07", RoomType: "Single Room", image: "./Images/single-room-7.jpg", checkin: '07/31/2022', checkout: '08/01/2022' }
+    {
+      Id: "07",
+      RoomType: "Single Room",
+      checkin: "08/01/2022",
+      checkout: "09/01/2022",
+    },
   ]);
 
   const [perRoomBooking, setRoomState] = useState();
+
+  const [roomId, setroomId] = useState();
+
+  // Callback to fetch ID data from Room child
+  const idCallback = (idData) => {
+    setroomId(idData);
+  };
 
   // Fetching data from children (dropdown + header) into parent
   const handleRoomDataCallback = (childData) => {
@@ -21,7 +33,7 @@ const Home = () => {
       roomCount: childData.roomTotal,
       checkin: childData.startDate,
       checkout: childData.endDate,
-      roomType: childData.roomSort,
+      roomType: childData.roomSort
     });
   };
 
@@ -38,18 +50,27 @@ const Home = () => {
         });
       } else if (booking.length >= 1) {
         // Get booked rooms
-        const bookedRooms = []
-         booking.forEach((room) => {
-            if (formatDate(perRoomBooking.checkin) >= formatDate(room.checkin) && formatDate(perRoomBooking.checkin) <= formatDate(room.checkout)) return bookedRooms.push(room.Id);
-          });
+        const bookedRooms = [];
+        booking.forEach((room) => {
+          if (
+            formatDate(perRoomBooking.checkin) >= formatDate(room.checkin) &&
+            formatDate(perRoomBooking.checkin) <= formatDate(room.checkout)
+          )
+            // Returning booked room data (ID - checkin - checkout)
+            return bookedRooms.push(roomId)
+            // return bookedRooms.push({roomId, type: perRoomBooking.roomType, checkin: perRoomBooking.checkin, checkout: perRoomBooking.checkout});
+        });
 
-        // return available rooms that don't belong to bookedRooms array 
-        if(bookedRooms) {
+        console.log(bookedRooms)
+        // return available rooms that don't belong to bookedRooms array
+        if (bookedRooms) {
           return Hotel.filter((room) => {
-            return !bookedRooms.includes(room.Id) && room.RoomType === perRoomBooking.roomType;
+            return (
+              !bookedRooms.includes(room.Id) &&
+              room.RoomType === perRoomBooking.roomType
+            );
           });
-        }
-        else return [];
+        } else return [];
       }
     } else return [];
   }
@@ -61,10 +82,10 @@ const Home = () => {
       <div className="roomContainer">
         <div className="featuredRooms">
           {filtered().map((roomObj) => (
-            <Room dataPacket={roomObj} key={roomObj.Id} />
+            <Room parentCallback={idCallback} dataPacket={roomObj} key={roomObj.Id} />
           ))}
         </div>
-        <div className="dataDiv"></div>
+        <div>Selected Room ID: {roomId}</div>
       </div>
     </div>
   );

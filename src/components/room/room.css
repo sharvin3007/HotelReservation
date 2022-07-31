@@ -15,7 +15,7 @@
 
 .title {
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     left: 15px;
     color: #fff;
 }

@@ -1,13 +1,11 @@
 import "./room.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const Room = (props) => {
-  const [roomId, setRoomId] = useState()
 
-  const handleClick = () => {
-    setRoomId(props.dataPacket.Id)
-  }
+  const onTriggerParent = (event) => {
+    props.parentCallback(props.dataPacket.Id)
+    event.preventDefault()
+  } 
 
   return (
     <div className="roomItem">
@@ -18,10 +16,12 @@ const Room = (props) => {
       />
       <div className="title">
         <h2>{props.dataPacket.RoomType}</h2>
-        <h3>{props.dataPacket.status}</h3>
+        {/* <h3>{props.dataPacket.status}</h3> */}
       </div>
       <div className="btnContainer">
-        <button onClick={handleClick} className="bookBtn">Book now</button>
+        <button onClick={onTriggerParent} className="bookBtn">
+          Book now
+        </button>
       </div>
     </div>
   );
