@@ -3,7 +3,7 @@ import "./room.css";
 const Room = (props) => {
 
   const onTriggerParent = (event) => {
-    props.parentCallback(props.dataPacket.Id)
+    props.parentCallback(props.dataPacket)
     event.preventDefault()
   } 
 
@@ -15,7 +15,7 @@ const Room = (props) => {
         className="roomImg"
       />
       <div className="title">
-        <h2>{props.dataPacket.RoomType}</h2>
+        <h2 class="roomtype">{props.dataPacket.RoomType}</h2>
         {/* <h3>{props.dataPacket.status}</h3> */}
       </div>
       <div className="btnContainer">

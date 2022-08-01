@@ -15,7 +15,7 @@
 
 .title {
     position: absolute;
-    bottom: 5px;
+    bottom: 50px;
     left: 15px;
     color: #fff;
 }
@@ -42,4 +42,8 @@ img.roomImg {
     background-color: brown;
     font-size:12px;
     text-decoration: none;
+}
+
+h2.roomtype {
+    font-size: 1.2em;
 }
