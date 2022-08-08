@@ -15,14 +15,14 @@ const Home = () => {
   // Callback to fetch ID data from Room child
   const idCallback = (idData) => {
     if (idData && perRoomBooking) {
-      const bookedRoom =  {
+      const bookedRoom = {
         Id: idData.Id,
         RoomType: perRoomBooking.roomType,
         checkin: perRoomBooking.checkin,
         checkout: perRoomBooking.checkout,
-      }
-      setBooking(booking => [...booking, bookedRoom]);
-    }   
+      };
+      setBooking((booking) => [...booking, bookedRoom]);
+    }
   };
 
   // Fetching data from children (dropdown + header) into parent
@@ -31,7 +31,7 @@ const Home = () => {
       roomCount: childData.roomTotal,
       checkin: childData.startDate,
       checkout: childData.endDate,
-      roomType: childData.roomSort
+      roomType: childData.roomSort,
     });
   };
 
@@ -40,6 +40,7 @@ const Home = () => {
     return new Date(date);
   }
 
+  // Filtering based on data received by user
   function filtered() {
     console.log("booking", booking);
     if (perRoomBooking) {
@@ -60,7 +61,7 @@ const Home = () => {
         });
         // return available rooms that don't belong to bookedRooms array
         if (bookedRooms) {
-          console.log('bookedRooms exist', bookedRooms)
+          console.log("bookedRooms exist", bookedRooms);
           return Hotel.filter((room) => {
             return (
               !bookedRooms.includes(room.Id) &&
@@ -72,6 +73,7 @@ const Home = () => {
     } else return [];
   }
 
+  // Get booked rooms array
   function bookedRooms() {
     if (perRoomBooking) {
       if (booking.length >= 1) {
@@ -87,7 +89,7 @@ const Home = () => {
         });
         // return available rooms that don't belong to bookedRooms array
         if (bookedRooms) {
-          console.log('bookedRooms exist', bookedRooms)
+          console.log("bookedRooms exist", bookedRooms);
           return Hotel.filter((room) => {
             return (
               bookedRooms.includes(room.Id) &&
@@ -95,11 +97,9 @@ const Home = () => {
             );
           });
         } else return [];
-      }       
-      else return []
+      } else return [];
+    } else return [];
   }
-  else return [];
-}
 
   return (
     <div>
@@ -109,7 +109,11 @@ const Home = () => {
         <div className="featuredRooms">
           <h1 className="availHead">Available Rooms</h1>
           {filtered().map((roomObj) => (
-            <Room parentCallback={idCallback} dataPacket={roomObj} key={roomObj.Id} />
+            <Room
+              parentCallback={idCallback}
+              dataPacket={roomObj}
+              key={roomObj.Id}
+            />
           ))}
         </div>
         <div className="featuredRooms">

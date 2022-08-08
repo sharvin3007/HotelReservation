@@ -4,8 +4,7 @@ import {
   faCalendar,
   faHandsHolding,
   faHomeAlt,
-  faHouse,
-  faPerson,
+  faHouse
 } from "@fortawesome/free-solid-svg-icons";
 import "./header.css";
 import "react-date-range/dist/styles.css"; // main css file
@@ -15,7 +14,6 @@ import { DateRange } from "react-date-range";
 import moment from "moment";
 import Dropdown from "../dropdown/Dropdown";
 import { NavLink } from "react-router-dom";
-import { format } from "date-fns";
 
 const Header = (props) => {
   // Keeping the date range picker closed when window loads
@@ -53,11 +51,11 @@ const Header = (props) => {
     }
   };
 
-  const [roomType, setRoomType] = useState('')
+  const [roomType, setRoomType] = useState("");
 
   const handleRoomTypeCallback = (typeData) => {
-    setRoomType(typeData)
-  }
+    setRoomType(typeData);
+  };
 
   // Function to create object of room data on search
   const onTriggerTrx = () => {
@@ -65,7 +63,7 @@ const Header = (props) => {
       roomTotal: roomCount,
       startDate: formatStartDate,
       endDate: formatEndDate,
-      roomSort: roomType
+      roomSort: roomType,
     };
     props.parentCallback(childObj);
   };
@@ -97,7 +95,7 @@ const Header = (props) => {
         <div className="headerSearchBar">
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faBed} className="searchIcon" />
-            <Dropdown typeCallback={handleRoomTypeCallback}/>
+            <Dropdown typeCallback={handleRoomTypeCallback} />
           </div>
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faCalendar} className="searchIcon" />

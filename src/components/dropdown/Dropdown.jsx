@@ -5,18 +5,18 @@ import "./dropdown.css";
 
 // Function to create object of room data on search
 
-const   options=  ['Single Room', 'Double Room'];
+const options = ["Single Room", "Double Room"];
 const defaultValue = options[0];
 
 const Dropdown = (props) => {
   const [option, setOptions] = useState(defaultValue);
-  
+
   const handleSelection = (e) => {
-    const selectedVal = e.value
-    setOptions(selectedVal)
-    props.typeCallback(selectedVal)
-  }
-  
+    const selectedVal = e.value;
+    setOptions(selectedVal);
+    props.typeCallback(selectedVal);
+  };
+
   return (
     <ReactDropdown
       className="dropdown"
