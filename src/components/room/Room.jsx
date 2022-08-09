@@ -1,11 +1,11 @@
-import "./room.css";
+import React from 'react'
+import './room.css'
 
 const Room = (props) => {
-
   const onTriggerParent = (event) => {
     props.parentCallback(props.dataPacket)
     event.preventDefault()
-  } 
+  }
 
   return (
     <div className="roomItem">
@@ -15,7 +15,7 @@ const Room = (props) => {
         className="roomImg"
       />
       <div className="title">
-        <h2 class="roomtype">{props.dataPacket.RoomType}</h2>
+        <h2 className="roomtype">{props.dataPacket.RoomType}</h2>
         {/* <h3>{props.dataPacket.status}</h3> */}
       </div>
       <div className="btnContainer">
@@ -24,13 +24,13 @@ const Room = (props) => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
 // Giving default props
 Room.defaultProps = {
-  roomType: "Single Room",
-  status: "Available",
-  image: "./Images/single-room-1.jpeg",
-};
-export default Room;
+  roomType: 'Single Room',
+  status: 'Available',
+  image: './Images/single-room-1.jpeg'
+}
+export default Room

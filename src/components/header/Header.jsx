@@ -1,61 +1,61 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faBed,
   faCalendar,
   faHandsHolding,
   faHomeAlt,
   faHouse
-} from "@fortawesome/free-solid-svg-icons";
-import "./header.css";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
-import { useState } from "react";
-import { DateRange } from "react-date-range";
-import moment from "moment";
-import Dropdown from "../dropdown/Dropdown";
-import { NavLink } from "react-router-dom";
+} from '@fortawesome/free-solid-svg-icons'
+import './header.css'
+import 'react-date-range/dist/styles.css' // main css file
+import 'react-date-range/dist/theme/default.css' // theme css file
+import { useState, React } from 'react'
+import { DateRange } from 'react-date-range'
+import moment from 'moment'
+import Dropdown from '../dropdown/Dropdown'
+import { NavLink } from 'react-router-dom'
 
 const Header = (props) => {
   // Keeping the date range picker closed when window loads
-  const [openDate, setOpenDate] = useState(false);
+  const [openDate, setOpenDate] = useState(false)
 
   // Setting states for start and end dates
   const [date, setDate] = useState([
     {
       startDate: new Date(),
       endDate: new Date().setDate(new Date().getDate() + 1),
-      key: "selection",
-    },
-  ]);
+      key: 'selection'
+    }
+  ])
 
   // Formatting date as per required string
-  const formatStartDate = moment(date[0].startDate).format("MM/DD/YYYY");
-  const formatEndDate = moment(date[0].endDate).format("MM/DD/YYYY");
+  const formatStartDate = moment(date[0].startDate).format('MM/DD/YYYY')
+  const formatEndDate = moment(date[0].endDate).format('MM/DD/YYYY')
 
   // Setting states for room ccupancy to be false (closed) when window opens
-  const [openPeople, setopenPeople] = useState(false);
+  const [openPeople, setopenPeople] = useState(false)
 
   // Set initial count
-  const [roomCount, setRoomCount] = useState(1);
+  const [roomCount, setRoomCount] = useState(1)
   // const [peopleCount, setPeopleCount] = useState(1);
 
   const increaseRoomCount = () => {
     if (roomCount < 10) {
-      setRoomCount(roomCount + 1);
+      setRoomCount(roomCount + 1)
     }
-  };
+  }
 
   const decreaseRoomCount = () => {
     if (roomCount > 0) {
-      setRoomCount(roomCount - 1);
+      setRoomCount(roomCount - 1)
     }
-  };
+  }
 
-  const [roomType, setRoomType] = useState("");
+  const [roomType, setRoomType] = useState('')
 
   const handleRoomTypeCallback = (typeData) => {
-    setRoomType(typeData);
-  };
+    setRoomType(typeData)
+  }
 
   // Function to create object of room data on search
   const onTriggerTrx = () => {
@@ -63,10 +63,10 @@ const Header = (props) => {
       roomTotal: roomCount,
       startDate: formatStartDate,
       endDate: formatEndDate,
-      roomSort: roomType,
-    };
-    props.parentCallback(childObj);
-  };
+      roomSort: roomType
+    }
+    props.parentCallback(childObj)
+  }
 
   return (
     <div className="header">
@@ -101,7 +101,7 @@ const Header = (props) => {
             <FontAwesomeIcon icon={faCalendar} className="searchIcon" />
             <span
               onClick={() => {
-                setOpenDate(!openDate);
+                setOpenDate(!openDate)
               }}
               className="headerSearchText"
             >{`${formatStartDate} to ${formatEndDate}`}</span>
@@ -119,7 +119,7 @@ const Header = (props) => {
             <FontAwesomeIcon icon={faHomeAlt} className="searchIcon" />
             <span
               onClick={() => {
-                setopenPeople(!openPeople);
+                setopenPeople(!openPeople)
               }}
               className="headerSearchText"
             >
@@ -158,7 +158,7 @@ const Header = (props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
