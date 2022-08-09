@@ -1,12 +1,27 @@
-# HotelReservation
-=======
-# Getting Started with Create React App
+# Hotel Reservation App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a front-end application built in React currently under development.
 
-## Available Scripts
+## App Overview
+
+React was used to create this project. The application focuses on letting users select a room (single or double) for a specific date range, and choices are presented for that scope based on the data provided. A local data object is being used to retrieve data and incorporate information into the app. 
+
+To start you can simply [download](https://github.com/sharvin3007/HotelReservation/archive/master.zip) the boilerplate and unzip it into your working directory. You can also clone if you wish to contribute.
+
+## Technology
+
+* React (v.18.2.0)
+
+## Usage
 
 In the project directory, you can run:
+
+### `npm install`
+
+This is to ensure all dependencies are downloaded. 
+After a fresh clone, there is likely to be no `node_modules` since that is `.gitignore`'d.
+
+Alternately, if `node_modules` exists, remove it with `rm -rf node_modules` and then run `npm install`.
 
 ### `npm start`
 
@@ -41,33 +56,23 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## Linting
+
+ESLint is used to lint the application code. 
+```
+# Run Linter
+npm run lint
+
+# Auto-Fix ESLint Issues
+npm run lint:fix
+```
+
+## Contributing
+
+Suggestions or pull requests are welcome.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> 44e0b39 (Initialize project using Create React App)

@@ -1,0 +1,49 @@
+.featuredRooms {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.roomItem {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.title {
+    position: absolute;
+    bottom: 50px;
+    left: 15px;
+    color: #fff;
+}
+
+img.roomImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btnContainer {
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+}
+
+.bookBtn {
+    border: 1px solid brown;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 40px;
+    background-color: brown;
+    font-size:12px;
+    text-decoration: none;
+}
+
+h2.roomtype {
+    font-size: 1.2em;
+}
